@@ -1,7 +1,7 @@
-version: "3.3"
+version: "3.9"
 services:
   api:
-    build: ../simple_api/
+    build: ../../simple_api/
     expose: # only exposed to other containers (services)
       - "9999"
   proxy:
@@ -13,3 +13,4 @@ services:
       - ${D_CFG_PATH}:/etc/traefik/traefik-dynamic-cfg.yaml
     ports:
      - "80:80"
+    cpus: 2

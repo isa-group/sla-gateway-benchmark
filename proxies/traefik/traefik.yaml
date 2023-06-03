@@ -1,3 +1,16 @@
+#accessLog:
+  ##bufferingSize: 1
+  ##filePath: "/tmp/access.log"
+  #fields:
+    #headers:
+      #defaultMode: keep
+      ##names:
+      ##    apikey: keep
+accessLog:
+  fields:
+    defaultMode: keep
+    headers:
+      defaultMode: keep
 entryPoints:
   http:
     address: ':80'

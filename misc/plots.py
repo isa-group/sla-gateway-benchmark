@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-bmk2_csv_path = "/tmp/kept/npm_test_loops.csv"
+bmk2_csv_path = "/tmp/npm_test_loops.csv"
 bmk2_results_pd = pd.read_csv(bmk2_csv_path, index_col=False)  
 plots_location = "/tmp"
 

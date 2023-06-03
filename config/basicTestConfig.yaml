@@ -1,0 +1,4 @@
+authLocation: header
+extraRequests: 3
+minutesToRun: 3
+secondsToRun: 30

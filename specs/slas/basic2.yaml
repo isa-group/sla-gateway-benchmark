@@ -30,6 +30,8 @@ plan:
         requests:
           - max: 1
             period: second
+          - max: 3
+            period: minute
       post:
         requests:
           - max: 2

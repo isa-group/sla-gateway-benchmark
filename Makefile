@@ -67,7 +67,7 @@ benchmark_2:
 		exit 1; \
 	fi
 
-	@ echo "authLocation: header" > ${BMK2_TEST_CFG} ; \
+	@ echo "authLocation: ${AUTH_LOCATION}" > ${BMK2_TEST_CFG} ; \
 	echo "extraRequests: 2" >> ${BMK2_TEST_CFG} ; \
 	echo "secondsToRun: 3" >> ${BMK2_TEST_CFG} ; \
 

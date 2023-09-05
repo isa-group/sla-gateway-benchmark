@@ -31,10 +31,14 @@ benchmark_1:
 	[pro] GET /pets - 10/s,[pro] POST /pets - 20/m,[pro] GET /pets/id - 30/s,[pro] PUT /pets/id - 40/m,[pro] DELETE /pets/id - 50/s" > ${CSV_FILE_BMK1}
 
 	@ for proxy in ${PROXIES}; do \
+		echo "#########################################################################" ; \
+		echo "# Creating proxy configuration file with sla-wizard for $$proxy" ; \
 		node ${SLA_WIZARD_PATH}/src/index.js config --authLocation ${AUTH_LOCATION} $$proxy \
 			--oas specs/simple_api_oas.yaml \
 			--sla specs/slas/ \
 			--outFile /tmp/proxy-configuration-file ; \
+		echo "...DONE" ; \
+		echo "# Starting containerized test bed based on Docker-Compose" ; \
 		if [ "$$proxy" = "traefik" ]; then \
 			D_CFG_PATH=/tmp/proxy-configuration-file CFG_PATH=./traefik.yaml docker-compose \
 				--file proxies/$$proxy/docker-compose-$$proxy.yaml up \
@@ -45,11 +49,16 @@ benchmark_1:
 				--detach ; \
 		fi ; \
 		sleep 4 # Wait until containers are ready and launch test ; \
+		echo "...DONE" ; \
+		echo "# Running tests with sla-wizard's 'npm test'" ; \
 		TEST_CONFIG=${NT_TEST_CONFIG} \
 		OAS4TEST=${NT_OAS4TEST} \
 		SLAS_PATH=${NT_SLAS_PATH} \
 		npm --prefix ${SLA_WIZARD_PATH} test > /tmp/npm_test_logs ; \
+		echo "...DONE" ; \
+		echo "# Tearing down test-bed" ; \
 		CFG_PATH=/tmp/proxy-configuration-file docker-compose --file proxies/$$proxy/docker-compose-$$proxy.yaml down ; \
+		echo "...DONE" ; \
 		echo -n $$proxy, >> ${CSV_FILE_BMK1} ; \
 		for expected in ${EXPECTED_RESULTS}; do \
 			cat /tmp/npm_test_logs | grep "to equal $$expected$$" | sed 's/to equal/instead of/g' | sed 's/AssertionError: expected/Got/g' > /tmp/auxFileBMK1 ; \

@@ -1,14 +1,15 @@
 sla4oas: 1.0.0
 context:
-  id: proCustomer4
+  id: proCustomer3
   type: agreement
   api:
     $ref: ./simple_api_oas.yaml
   provider: ISAGroup
   customer: BAR S.L
   apikeys:
-    - proplan-sla4-apikey1
-    - proplan-sla4-apikey2
+    - proplan-sla3-apikey1
+    - proplan-sla3-apikey2
+    - proplan-sla3-apikey3
   validity:
     from: '2023-09-23T20:20:40+00:00'
     to: '2024-09-23T20:20:40+00:00'

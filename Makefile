@@ -47,7 +47,7 @@ benchmark_1:
 			CFG_PATH=/tmp/proxy-configuration-file docker-compose \
 				--file proxies/$$proxy/docker-compose-$$proxy.yaml up \
 				--detach ; \
-		fi ; \
+		fi > /dev/null 2>&1 ; \
 		sleep 4 # Wait until containers are ready and launch test ; \
 		echo "...DONE" ; \
 		echo "# Running tests with sla-wizard's 'npm test'" ; \
@@ -56,8 +56,8 @@ benchmark_1:
 		SLAS_PATH=${NT_SLAS_PATH} \
 		npm --prefix ${SLA_WIZARD_PATH} test > /tmp/npm_test_logs ; \
 		echo "...DONE" ; \
-		echo "# Tearing down test-bed" ; \
-		CFG_PATH=/tmp/proxy-configuration-file docker-compose --file proxies/$$proxy/docker-compose-$$proxy.yaml down ; \
+		echo "# Tearing down test bed" ; \
+		CFG_PATH=/tmp/proxy-configuration-file docker-compose --file proxies/$$proxy/docker-compose-$$proxy.yaml down > /dev/null 2>&1 ; \
 		echo "...DONE" ; \
 		echo -n $$proxy, >> ${CSV_FILE_BMK1} ; \
 		for expected in ${EXPECTED_RESULTS}; do \

@@ -5,7 +5,7 @@ services:
     expose: # only exposed to other containers (services)
       - "9999"
   proxy:
-    image: nginx
+    image: nginx:1.23.2
     depends_on:
             - api
     volumes:

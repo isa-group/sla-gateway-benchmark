@@ -5,7 +5,7 @@ services:
     expose: # only exposed to other containers (services)
       - "9999"
   proxy:
-    image: haproxytech/haproxy-alpine # haproxy #:1.7
+    image: haproxytech/haproxy-alpine:2.7.0
     depends_on:
             - api
     volumes:

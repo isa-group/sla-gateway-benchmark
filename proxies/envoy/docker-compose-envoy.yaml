@@ -5,7 +5,7 @@ services:
     expose: # only exposed to other containers (services)
       - "9999"
   proxy:
-    image: envoyproxy/envoy-dev:latest
+    image: envoyproxy/envoy:v1.26.0
     depends_on:
             - api
     volumes:

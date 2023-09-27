@@ -1,15 +1,16 @@
 sla4oas: 1.0.0
 context:
-  id: basicCustomer1
+  id: basicCustomer4
   type: agreement
   api:
     $ref: ./simple_api_oas.yaml
   provider: ISAGroup
   customer: FOO S.L
   apikeys:
-    - basicplan-sla1-apikey1
-    - basicplan-sla1-apikey2
-    - basicplan-sla1-apikey3
+    - basicplan-sla4-apikey1
+    - basicplan-sla4-apikey2
+    - basicplan-sla4-apikey3
+    - basicplan-sla4-apikey4
   validity:
     from: '2023-09-23T20:20:40+00:00'
     to: '2024-09-23T20:20:40+00:00'

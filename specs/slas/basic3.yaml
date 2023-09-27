@@ -1,15 +1,16 @@
 sla4oas: 1.0.0
 context:
-  id: proCustomer3
+  id: basicCustomer3
   type: agreement
   api:
     $ref: ./simple_api_oas.yaml
   provider: ISAGroup
-  customer: BAR S.L
+  customer: FOO S.L
   apikeys:
-    - proplan-sla3-apikey1
-    - proplan-sla3-apikey2
-    - proplan-sla3-apikey3
+    - basicplan-sla3-apikey1
+    - basicplan-sla3-apikey2
+    - basicplan-sla3-apikey3
+    - basicplan-sla3-apikey4
   validity:
     from: '2023-09-23T20:20:40+00:00'
     to: '2024-09-23T20:20:40+00:00'
@@ -19,9 +20,9 @@ metrics:
     format: int64
     description: Number of requests
 plan:
-  name: pro
+  name: basic
   pricing:
-    cost: 15
+    cost: 5
     currency: EUR
     billing: monthly
   availability: R/00:00:00Z/23:59:59Z
@@ -29,24 +30,24 @@ plan:
     /pets:
       get:
         requests:
-          - max: 10
+          - max: 1
             period: second
       post:
         requests:
-          - max: 20
+          - max: 2
             period: minute
             type: burst
     /pets/{id}:
       get:
         requests:
-          - max: 30
+          - max: 3
             period: second
       put:
         requests:
-          - max: 40
+          - max: 4
             period: minute
             type: average
       delete:
         requests:
-          - max: 50
+          - max: 5
             period: second

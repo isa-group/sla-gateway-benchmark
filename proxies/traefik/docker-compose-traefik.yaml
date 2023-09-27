@@ -5,7 +5,7 @@ services:
     expose: # only exposed to other containers (services)
       - "9999"
   proxy:
-    image: traefik:2.10.1
+    image: traefik:latest
     depends_on:
             - api
     volumes:

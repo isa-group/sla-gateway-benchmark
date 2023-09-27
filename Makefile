@@ -6,10 +6,13 @@ CSV_FILE_BMK2 ?= /tmp/npm_test_loops.csv
 BMK2_ITERATIONS ?= 20
 PROXIES ?= envoy haproxy nginx traefik
 NPM_TEST_DELAYS ?= 0 0.25 0.5 1
-#EXPECTED_RESULTS ?= 90 18 270 36 450 900 180 2700 360 4500             # 2 SLAs - 3 API keys per SLA - 3/3/30
+EXPECTED_RESULTS ?= 90 18 270 36 450 900 180 2700 360 4500             # 2 SLAs - 3 API keys per SLA - 3/3/30
 #EXPECTED_RESULTS ?= 9 12 27 24 45 90 120 270 240 450				    # 2 SLAs - 3 API keys per SLA - 3/2/3
+#EXPECTED_RESULTS ?= 120 24 360 48 600 1200 240 3600 480 6000           # 4 SLAs - 2 API keys per SLA - 3/3/30
+#EXPECTED_RESULTS ?= 180 36 540 72 900 1800 360 5400 720 9000           # 6 SLAs - 2 API keys per SLA - 3/3/30
 #EXPECTED_RESULTS ?= 270 54 810 108 1350 2700 540 8100 1080 13500       # 6 SLAs - 3 API keys per SLA - 3/3/30
-EXPECTED_RESULTS ?= 120 24 360 48 600 1200 240 3600 480 6000           # 4 SLAs - 2 API keys per SLA - 3/3/30
+#EXPECTED_RESULTS ?= 240 48 720 96 1200 2400 480 7200 960 12000         # 8 SLAs - 2 API keys per SLA - 3/3/30
+#EXPECTED_RESULTS ?= 480 96 1440 192 2400 4800 960 14400 1920 24000     # 8 SLAs - 4 API keys per SLA - 3/3/30
 
 # npm test configurations
 NT_TEST_CONFIG ?= ../sla-gateway-benchmark/config/basicTestConfig.yaml

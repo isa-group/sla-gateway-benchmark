@@ -47,7 +47,7 @@ for (var i = 1; i <= SLAsToProduce; i++) {
     }
 
     // Load template
-    var slaTemplate = fs.readFileSync(path.join('', `template_${plan}.yaml`), 'utf8');
+    var slaTemplate = fs.readFileSync(path.join(__dirname, `template_${plan}.yaml`), 'utf8');
     slaTemplate = jsyaml.load(slaTemplate);
 
     // Add customer id and apikeys to template

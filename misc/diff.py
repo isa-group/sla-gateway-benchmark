@@ -42,7 +42,7 @@ for csv_path in csv_paths:
         plt.subplot(plotpos[count])
         plot_name = csv_path.split('/')[-2]
         plot_name_mod = plot_name.replace("slas_"," SLAs, ").replace("apikeys", " apikeys each")
-        plt.suptitle(plot_name_mod, fontsize=25)
+        #plt.suptitle(plot_name_mod, fontsize=25)
         #plt.title("title here")
 
         plt.title(proxy)
@@ -63,6 +63,11 @@ for csv_path in csv_paths:
         plt.yticks(range(0, 27000, 2000), rotation=90, fontsize = 10)
         plt.xticks([elem + width / 2 for elem in range(1,len(obtained)+1)], labels = header, rotation=90, fontsize = 10)
         
+        colors = {'Obtained HTTP 200s':'red', 'Expected HTTP 200s':'green'}         
+        labels = list(colors.keys())
+        handles = [plt.Rectangle((0,0),1,1, color=colors[label]) for label in labels]
+        plt.legend(handles, labels)
+
         count = count + 1
 
-    plt.savefig('diff_plot_%s.png' % plot_name)
+    plt.savefig('diff_plot_%s.png' % plot_name, bbox_inches='tight')

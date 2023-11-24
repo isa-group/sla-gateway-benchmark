@@ -13,7 +13,7 @@ plotpos = [141, 142, 143, 144]
 for csv_path in csv_paths:
     bmk1_results_pd = pd.read_csv(csv_path, index_col=False)  
 
-    plt.figure(figsize=(20,11))
+    plt.figure(figsize=(22,4))
 
     count = 0
 
@@ -42,10 +42,11 @@ for csv_path in csv_paths:
         plt.subplot(plotpos[count])
         plot_name = csv_path.split('/')[-2]
         plot_name_mod = plot_name.replace("slas_"," SLAs, ").replace("apikeys", " apikeys each")
+        #plt.suptitle("ffffffffff")
         #plt.suptitle(plot_name_mod, fontsize=25)
         #plt.title("title here")
 
-        plt.title(proxy)
+        plt.title(proxy, fontsize = 15)
 
         # Width of a bar 
         width = 0.4
@@ -58,15 +59,16 @@ for csv_path in csv_paths:
         #plt.plot(range(1,len(expected)+1), expected, "-o")
         #plt.plot(range(1,len(obtained)+1), obtained, "-o")
 
-        plt.ylabel("Requests")
-        plt.xlabel("Endpoint Rate Limiting")
-        plt.yticks(range(0, 27000, 2000), rotation=90, fontsize = 10)
-        plt.xticks([elem + width / 2 for elem in range(1,len(obtained)+1)], labels = header, rotation=90, fontsize = 10)
+        #plt.ylabel("Requests")
+        #plt.xlabel("Endpoint Rate Limiting")
+        #plt.yticks(range(0, 7500, 1000), rotation=90, fontsize = 15) # For the single 4 slas, 2 apikeys good graph
+        plt.yticks(range(0, 31000, 6000), rotation=90, fontsize = 12)
+        plt.xticks([elem + width / 2 for elem in range(1,len(obtained)+1)], labels = header, rotation=90, fontsize = 12)
         
         colors = {'Obtained HTTP 200s':'red', 'Expected HTTP 200s':'green'}         
         labels = list(colors.keys())
         handles = [plt.Rectangle((0,0),1,1, color=colors[label]) for label in labels]
-        plt.legend(handles, labels)
+        plt.legend(handles, labels, fontsize = 9,loc='upper left')
 
         count = count + 1
 

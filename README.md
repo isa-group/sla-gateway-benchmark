@@ -4,8 +4,6 @@ With this tool we provide two benchmarks for API proxies.
 
 It makes use of `sla-wizard`, so for being able to use it please pull first that tool [from its public repo](https://github.com/isa-group/sla-wizard). 
 
-Note this tool is __still under construction__ and is not really flexible yet. Therefore, we suggest sticking to the default values when configuring it. 
-
 ### Benchmark 1
 
 This benchmark focuses on testing all endpoints in the SLA on several proxies. In a nutshell, it performs the following:
